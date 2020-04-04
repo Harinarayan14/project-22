@@ -8,8 +8,8 @@ var Engine = Matter.Engine,
  
 var engine;
 var world;
-var box;
- 
+var boxes = [];
+ console.log(boxes);
 var ground;
 var gSlider;
  
@@ -29,8 +29,16 @@ function setup() {
     // Create a ground rectangle that would hold all the boxes and add it to the world.
 
 }
- 
 
+function mousePressed() {
+    if (mouseY < 350) {
+        // Every time a mouse press occures create a new box.
+        box = new Box(mouseX,mouseY,Math.round(random(5,30)), Math.round(random(5,30)));
+        boxes.push(box);
+    box.display();
+        
+    }
+}
  
 function draw() {
     // Draw all the elements including the slider that 
@@ -46,10 +54,4 @@ Engine.update(engine);
 
 // You can either create a file for the class Box or build a simple function that creates one box at a time.
 // I have gone for the second option.
-function mousePressed() {
-    if (mouseY < 350) {
-        // Every time a mouse press occures create a new box.
-        box = new Box(mouseX,mouseY,Math.round(random(5,30)), Math.round(random(5,30)));
-        box.display();
-    }
-}
+
